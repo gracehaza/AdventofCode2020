@@ -1,5 +1,5 @@
 
-filepath = 'day04testinput.txt'
+filepath = 'day04input.txt'
 
 def look_at_passport(begin,end):
     with open(filepath,"r") as filenow:
@@ -22,7 +22,7 @@ def main():
         invalidpassportcount = 0
         lineslist = filenow.readlines()
         min = 0
-        for i in range(1,len(lineslist)):
+        for i in range(0,len(lineslist)):
             line = lineslist[i]
             if line =="\n":
                 max = i
@@ -31,6 +31,7 @@ def main():
                 for l in range(0,len(validityarray)):
                     if validityarray[l] == False:
                         invalidpassportcount += 1
+                        break  #prevents double counting
                 min = i
 
             if i == len(lineslist)-1:
@@ -39,10 +40,9 @@ def main():
                 for m in range (0,len(lastvalidityarray)):
                     if lastvalidityarray[m] == False:
                         invalidpassportcount += 1
+                        break #prevents double counting
 
-        print 'total passports invalid: ',invalidpassportcount
     validpassportnumber = totalpassportcount - invalidpassportcount
-    print 'total passports" ', totalpassportcount
     print 'total valid passport: ', validpassportnumber
 
 
